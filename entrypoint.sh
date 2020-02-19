@@ -36,7 +36,9 @@ fi
 
 # Create a dedicated profile for this action to avoid conflicts
 # with past/future actions.
-aws configure --profile s3-upload-action <<-EOF > /dev/null 2>&1
+PROFILE_NAME=s3-upload-action
+
+aws configure --profile ${PROFILE_NAME} <<-EOF > /dev/null 2>&1
 ${AWS_ACCESS_KEY_ID}
 ${AWS_SECRET_ACCESS_KEY}
 ${AWS_REGION}
@@ -52,14 +54,14 @@ fi
 # Sync using our dedicated profile and suppress verbose messages.
 # All other flags are optional via the `args:` directive.
 sh -c "aws s3 cp ${SOURCE_FILE} ${S3_URL} \
-        --profile s3-upload-action \
+        --profile ${PROFILE_NAME} \
         --no-progress \
         ${ENDPOINT_APPEND} $*"
 
 # Clear out credentials after we're done.
 # We need to re-run `aws configure` with bogus input instead of
 # deleting ~/.aws in case there are other credentials living there.
-aws configure --profile s3-sync-action <<-EOF > /dev/null 2>&1
+aws configure --profile ${PROFILE_NAME} <<-EOF > /dev/null 2>&1
 null
 null
 null
