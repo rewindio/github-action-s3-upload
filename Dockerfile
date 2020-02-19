@@ -2,8 +2,8 @@ FROM python:3.8-alpine
 
 LABEL "com.github.actions.name"="S3 Sync"
 LABEL "com.github.actions.description"="Upload a file to an AWS S3 bucket"
-LABEL "com.github.actions.icon"="refresh-cw"
-LABEL "com.github.actions.color"="green"
+LABEL "com.github.actions.icon"="upload-cloud"
+LABEL "com.github.actions.color"="purple"
 
 LABEL version="0.1.0"
 LABEL repository="https://github.com/rewindio/github-action-s3-upload"
