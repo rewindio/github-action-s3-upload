@@ -1,0 +1,9 @@
+name: "S3 Upload"
+description: "Upload a single file to an S3 bucket"
+author: dnorth98
+runs:
+  using: docker
+  image: Dockerfile
+branding:
+  icon: upload-cloud
+  color: purple
