@@ -16,4 +16,6 @@ ENV AWSCLI_VERSION='1.18.2'
 RUN pip install --quiet --no-cache-dir awscli==${AWSCLI_VERSION}
 
 ADD entrypoint.sh /entrypoint.sh
+RUN chmod a+x /entrypoint.sh
+
 ENTRYPOINT ["/entrypoint.sh"]
